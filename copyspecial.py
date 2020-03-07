@@ -22,7 +22,7 @@ __author__ = 'Justin Miller'
 # +++your code here+++
 # Write functions and modify main() to call them
 
-get_special_paths(d):
+def get_special_paths(d):
     """returns a list of the absolute paths of the special files in the given directory"""
     path_list = []
     all_dir_paths = os.listdir(d)
@@ -34,7 +34,7 @@ get_special_paths(d):
     return path_list
 
 
-copy_to(paths, to_dir) 
+def copy_to(paths, to_dir):
     """given a list of paths, copies those files into the given directory"""
     if not os.path.exists(to_dir):
         os.mkdir(to_dir)
@@ -42,10 +42,11 @@ copy_to(paths, to_dir)
         file = os.path.basename(path)
         shutil.copy(path, os.path.join(to_dir, file))
 
-zip_to(paths, zippath) 
+def zip_to(paths, zippath):
     """given a list of paths, zip those files up into the given zipfile"""
+    pass
 
-get_args():
+def get_args():
     # This snippet will help you get started with the argparse module.
     parser = argparse.ArgumentParser()
     parser.add_argument('--todir', help='dest dir for special files')
