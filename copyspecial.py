@@ -40,7 +40,10 @@ def copy_to(paths, to_dir):
 
 def zip_to(paths, zipfile):
     """given a list of paths, zip those files up into the given zipfile"""
-    cmd = 'zip -j ' + zipfile + ' ' + ' '.join(paths)
+    file_names = []
+    for each in paths:
+        file_names.append(os.path.basename(each))
+    cmd = 'zip ' + zipfile + '.zip ' + ' '.join(file_names)
     status = subprocess.check_call(cmd, shell=True)
     if status != 0:
         print('Error with zip_to function')
