@@ -19,18 +19,14 @@ import argparse
 __author__ = 'Justin Miller'
 
 
-# +++your code here+++
-# Write functions and modify main() to call them
-
 def get_special_paths(d):
     """returns a list of the absolute paths of the special files in the given directory"""
     path_list = []
     all_dir_paths = os.listdir(d)
     for each in all_dir_paths:
-        match = re.search(r'__w__', each)
+        match = re.search(r'__(\w+)__', each)
         if match:
             path_list.append(os.path.abspath(os.path.join(d, each)))
-    print(path_list)
     return path_list
 
 
@@ -49,8 +45,6 @@ def zip_to(paths, zipfile):
     if status != 0:
         print('Error with zip_to function')
 
-
-
 def get_args():
     # This snippet will help you get started with the argparse module.
     parser = argparse.ArgumentParser()
@@ -62,6 +56,17 @@ def get_args():
 
 def main():
     args = get_args()
+    current_dir = os.getcwd()
+    file_paths = get_special_paths(current_dir)
+    if args.todir:
+        copy_to(file_paths, args.todir)
+    elif args.tozip:
+        zip_to(file_paths, args.tozip)
+    else:
+        for each in file_paths:
+            print(each + '\n')
+
+
 
 
     # TODO you must write your own code to get the cmdline args.
