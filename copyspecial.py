@@ -20,7 +20,8 @@ __author__ = 'Justin Miller'
 
 
 def get_special_paths(d):
-    """returns a list of the absolute paths of the special files in the given directory"""
+    """returns a list of the absolute paths of
+    the special files in the given directory"""
     path_list = []
     all_dir_paths = os.listdir(d)
     for each in all_dir_paths:
@@ -38,6 +39,7 @@ def copy_to(paths, to_dir):
         file = os.path.basename(path)
         shutil.copy(path, os.path.join(to_dir, file))
 
+
 def zip_to(paths, zipfile):
     """given a list of paths, zip those files up into the given zipfile"""
     file_names = []
@@ -48,6 +50,7 @@ def zip_to(paths, zipfile):
     if status != 0:
         print('Error with zip_to function')
 
+
 def get_args():
     # This snippet will help you get started with the argparse module.
     parser = argparse.ArgumentParser()
@@ -56,6 +59,7 @@ def get_args():
     # TODO need an argument to pick up 'from_dir'
     args = parser.parse_args()
     return args
+
 
 def main():
     args = get_args()
@@ -69,14 +73,12 @@ def main():
         for each in file_paths:
             print(each + '\n')
 
-
-
-
     # TODO you must write your own code to get the cmdline args.
     # Read the docs and examples for the argparse module about how to do this.
 
     # Parsing command line arguments is a must-have skill.
-    # This is input data validation.  If something is wrong (or missing) with any
+    # This is input data validation.
+    # If something is wrong (or missing) with any
     # required args, the general rule is to print a usage message and exit(1).
 
     # +++your code here+++
