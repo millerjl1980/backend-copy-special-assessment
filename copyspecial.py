@@ -42,9 +42,14 @@ def copy_to(paths, to_dir):
         file = os.path.basename(path)
         shutil.copy(path, os.path.join(to_dir, file))
 
-def zip_to(paths, zippath):
+def zip_to(paths, zipfile):
     """given a list of paths, zip those files up into the given zipfile"""
-    pass
+    cmd = 'zip -j ' + zipfile + ' ' + ' '.join(paths)
+    status = subprocess.check_call(cmd, shell=True)
+    if status != 0:
+        print('Error with zip_to function')
+
+
 
 def get_args():
     # This snippet will help you get started with the argparse module.
